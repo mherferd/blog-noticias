@@ -1,0 +1,28 @@
+name: Deploy Blog Noticias a GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar GitHub Pages
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Generar archivos para despliegue
+        run: echo "¡Archivos listos para desplegar!"
+
+      - name: Desplegar en GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: main
+          folder: .
